@@ -1,21 +1,30 @@
-import { Row, Col, Form, Button } from "react-bootstrap";
+import { Row, Col, Form } from "react-bootstrap";
+import Select from '../bootstrap-components/Select';
+import Input from '../bootstrap-components/Input';
+import ButtonBootstrap from "../bootstrap-components/ButtonBootstrap";
+import { useContext } from "react";
+import { FilterContext } from "./context/FilterContext";
 
 export default function Filter(props)
 {
+    const { filterData, setFilterData } = useContext(FilterContext)
+
     let formFilterFields = [
         {
             key : 0,
             type : 'text',
             name : 'name',
             label : 'Nom de la team',
+            value : filterData.name,
             placeholder : "Nom de la team",
-            event : props.functionFilterName
+            event : (e) => setFilterData({...filterData, name : e.target.value}),
         },
         {
             key : 1,
             type : 'select',
             name : 'type',
             label : 'Type d\'unité',
+            value: filterData.unitType,
             defaultValue : "Type d'unité",
             options : [
                 {
@@ -29,13 +38,14 @@ export default function Filter(props)
                     label : 'Vaisseaux'
                 }
             ],
-            event : props.functionFilterType
+            event : (e) => setFilterData({...filterData, unitType : e.target.value})
         },
         {
             key : 2,
             type : 'select',
             name : 'emplacement',
             label : 'Emplacement',
+            value : filterData.squadType,
             defaultValue : "Attaque/Défense",
             options : [
                 {
@@ -49,26 +59,20 @@ export default function Filter(props)
                     label : 'Défense'
                 }
             ],
-            event : props.functionFilterEmplacement
+            event : (e) => setFilterData({...filterData, squadType : e.target.value})
         }
     ];
     return (
     <>
-        /* Créer un sous composant de type Select, Un sous composant de type Texte et un sous composant de type "bouton" et faire appel à ces composants dans la fonction map */
         <Row className="mt-4 justify-content-center">
             {
                 formFilterFields.map((element) => {
                     switch (element.type) {
                         case 'text' :
-                            var formInput = <Form.Control type="text" id={element.name} placeholder={element.placeholder}/>
+                            var formInput = <Input name={element.name} placeholder = {element.placeholder} value={element.value} event={element.event}/>
                             break;
                         case 'select' :
-                            var formInput = <Form.Select id={element.name}>
-                                <option>{element.defaultValue}</option>
-                                {
-                                    element.options.map((option, key) => <option key={"option-filter-select"+key} value={option.value}>{option.label}</option>)
-                                }
-                            </Form.Select>
+                            var formInput = <Select name={element.name} defaultValue={element.defaultValue} options={element.options} value={element.value} event={element.event}/>
                             break;
                     }
                     return [
@@ -82,10 +86,13 @@ export default function Filter(props)
         </Row>
         <Row className="justify-content-center mt-4">
             <Col className="col-2">
-                <Button type="submit">Valider la recherche</Button>
+                <ButtonBootstrap type="submit" text="Valider la recherche"/>
             </Col>
             <Col className="col-2">
-                <Button variant="secondary">Réinitialiser les filtres</Button>
+                <ButtonBootstrap variant="secondary" text="Réinitialiser les filtres"/>
+            </Col>
+            <Col className="col-2">
+                <ButtonBootstrap variant="success" text="Exporter le résultat"/>
             </Col>
         </Row>
     </>
