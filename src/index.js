@@ -1,13 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
-import Home from './Home';
+import Home from './routes/Root';
+import Error404 from './routes/Error404';
 import reportWebVitals from './reportWebVitals';
+import { loader as rootLoader } from './components/filter/FilterSquad'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home/>,
+    errorElement: <Error404/>,
+    loader: rootLoader
+  }
+])
 root.render(
   <React.StrictMode>
-    <Home/>
+    <RouterProvider router={router}/>
   </React.StrictMode>
 );
 

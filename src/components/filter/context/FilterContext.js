@@ -5,9 +5,9 @@ export const FilterContext = createContext();
 function FilterContextProvider({children}) {
     const [ filterData, setFilterData ] = useState(
         {
-          name:'test',
+          name:'t',
           unitType:'hero',
-          squadType:'defense'
+          squadType:''
         }
     )
 

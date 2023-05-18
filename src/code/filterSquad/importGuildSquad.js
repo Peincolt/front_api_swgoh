@@ -1,15 +1,9 @@
-import { useEffect, useState } from 'react';
-import Menu from '../components/menu/Menu.js';
-import Filter from '../components/filter/Filter.js';
-import Array from '../components/filter/Array';
-import FilterContextProvider from '../components/filter/context/FilterContext';
+import Pencil from "../../components/boxicon-components/Pencil"
+import Search from "../../components/boxicon-components/Search"
 
-function Home() {
-  const [ arraySquads, setArraySquads ] = useState([])
-
-  const headerArray = {name: 'Nom de l\'équipe', used_for: 'Utilisée pour', type: 'Type d\'unités', };
-  useEffect(() => {
-    fetch("http://www.api-hgamers.fr/api/guild/uuwcpRBoStWfogZersAvJA/squad/search", {
+export default function importGuildSquad(headerArray)
+{
+    return fetch("http://www.api-hgamers.fr/api/guild/uuwcpRBoStWfogZersAvJA/squad/search", {
       method: 'POST'
     })
     .then(res => res.json())
@@ -35,23 +29,11 @@ function Home() {
             
             return obj
           })
+          return json
         }
-        setArraySquads(json)
       },
       (error) => {
-        setArraySquads([]);
+        return []
       }
     )
-  },[])
-  return (
-    <div className="App">
-        <Menu/>
-        <FilterContextProvider>
-          <Filter/>
-          <Array header={headerArray} content={arraySquads}/>
-        </FilterContextProvider>
-    </div>
-  );
 }
-
-export default Home;

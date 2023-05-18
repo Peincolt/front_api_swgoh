@@ -86,13 +86,16 @@ export default function Filter(props)
         </Row>
         <Row className="justify-content-center mt-4">
             <Col className="col-2">
-                <ButtonBootstrap type="submit" text="Valider la recherche"/>
+                <ButtonBootstrap variant="secondary" text="Réinitialiser les filtres" action={
+                    (e) => {
+                        formFilterFields[1].value = "";
+                        formFilterFields[2].value = "";
+                        setFilterData({name:'', unitType:'', squadType:''})
+                    }
+                }/>
             </Col>
             <Col className="col-2">
-                <ButtonBootstrap variant="secondary" text="Réinitialiser les filtres"/>
-            </Col>
-            <Col className="col-2">
-                <ButtonBootstrap variant="success" text="Exporter le résultat"/>
+                <a className="btn btn-success" rel="noopener noreferrer" href="http://www.api-hgamers.fr/api/guild/uuwcpRBoStWfogZersAvJA/squad/export" target="_blank">Exporter le résultat</a>
             </Col>
         </Row>
     </>
