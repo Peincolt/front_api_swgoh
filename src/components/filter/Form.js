@@ -17,7 +17,7 @@ export default function Filter(props)
             label : 'Nom de la team',
             value : filterData.name,
             placeholder : "Nom de la team",
-            event : (e) => setFilterData({...filterData, name : e.target.value}),
+            event : (e) => setFilterData({...filterData, name : e.target.value})
         },
         {
             key : 1,
@@ -62,6 +62,7 @@ export default function Filter(props)
             event : (e) => setFilterData({...filterData, squadType : e.target.value})
         }
     ];
+
     return (
     <>
         <Row className="mt-4 justify-content-center">
@@ -86,7 +87,7 @@ export default function Filter(props)
         </Row>
         <Row className="justify-content-center mt-4">
             <Col className="col-2">
-                <ButtonBootstrap variant="secondary" text="Réinitialiser les filtres" action={
+                <ButtonBootstrap variant="secondary" text="Réinitialiser les filtres" onClick={
                     (e) => {
                         formFilterFields[1].value = "";
                         formFilterFields[2].value = "";
@@ -95,7 +96,28 @@ export default function Filter(props)
                 }/>
             </Col>
             <Col className="col-2">
-                <a className="btn btn-success" rel="noopener noreferrer" href="http://www.api-hgamers.fr/api/guild/uuwcpRBoStWfogZersAvJA/squad/export" target="_blank">Exporter le résultat</a>
+                <ButtonBootstrap 
+                    variant="success"
+                    target="_blank"
+                    text="Exporter les résultats"
+                    onClick = { e => 
+                        {
+                            let exportUrl = "http://www.api-hgamers.fr/api/guild/uuwcpRBoStWfogZersAvJA/squad/export"
+                            for (const [key, value] of Object.entries(filterData)) {
+                                let first = true;
+                                if (value !== '') {
+                                    if (first) {
+                                        first = false
+                                        exportUrl+="?"+key+"="+value
+                                    } else {
+                                        exportUrl+="&"+key+"="+value
+                                    }
+                                }
+                              }
+                            window.open(exportUrl)
+                        }
+                    }
+                />
             </Col>
         </Row>
     </>
