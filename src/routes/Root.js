@@ -7,7 +7,7 @@ export default function Root() {
       <div id="menu">
         <Menu/>
       </div>
-      <div id="content">
+      <div id="content" className='container'>
         <FilterSquad/>
       </div>
     </>

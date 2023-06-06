@@ -1,15 +1,33 @@
-import Array from "./Array";
-import Team from "./Team";
+import { Row, Col } from "react-bootstrap";
 import importGuildViewSquad from "../../code/viewSquad/importGuildViewSquad"
 import { useLoaderData } from "react-router-dom";
+import ButtonBootstrap from "../bootstrap-components/ButtonBootstrap";
+import ArraySquad from "./ArraySquad";
 
 export default function Squad(props)
 {
     const { squad } = useLoaderData()
+    console.log(squad)
     return (
         <>
-            <Team squad={squad}/>
-            <Array squad={squad}/>
+            <Row className="mt-4 justify-content-center">
+                <Col className="col-5">
+                    <h1>{squad.name}</h1>
+                </Col>
+                <Col>
+                    <Row>
+                        <Col>
+                            <ButtonBootstrap variant="dark" text="Modifier l'escouade"/>
+                        </Col>
+                        <Col>
+                            <ButtonBootstrap variant="primary" text="Exporter l'escouade"/>
+                        </Col>
+                    </Row>
+                </Col>
+            </Row>
+            <Row className="mt-4 justify-content-center">
+                <ArraySquad squad={squad}/>
+            </Row>  
         </>
       );
 }

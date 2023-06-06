@@ -6,7 +6,9 @@ export default function ViewSquad(props)
     return (
         <>
             <Menu/>
-            <Squad/>
+            <div className="container">
+                <Squad/>
+            </div>
         </>
     )
 }
