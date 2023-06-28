@@ -20,7 +20,9 @@ export default function Squad(props)
                             <ButtonBootstrap variant="dark" text="Modifier l'escouade"/>
                         </Col>
                         <Col>
-                            <ButtonBootstrap variant="primary" text="Exporter l'escouade"/>
+                            <ButtonBootstrap variant="primary" text="Exporter l'escouade" target="_blank" onClick = { e => {
+                                window.open(`http://www.api-hgamers.fr/api/guild/uuwcpRBoStWfogZersAvJA/squad/${squad.uniqueIdentifier}/export`)
+                            }} />
                         </Col>
                     </Row>
                 </Col>
