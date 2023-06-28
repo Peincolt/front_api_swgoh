@@ -4,6 +4,7 @@ import Input from '../bootstrap-components/Input';
 import ButtonBootstrap from "../bootstrap-components/ButtonBootstrap";
 import { useContext } from "react";
 import { FilterContext } from "./context/FilterContext";
+import '../../assets/css/filter.css';
 
 export default function Filter(props)
 {
@@ -65,7 +66,7 @@ export default function Filter(props)
 
     return (
     <>
-        <Row className="mt-4 justify-content-center">
+        <Row className="mt-4 justify-content-center align-items-end">
             {
                 formFilterFields.map((element) => {
                     switch (element.type) {
@@ -77,16 +78,14 @@ export default function Filter(props)
                             break;
                     }
                     return [
-                        <Col className="col-2" key={"col-"+element.key}>
+                        <Col lg={2} key={"col-"+element.key} className="mrg-bottom-inputs">
                             <Form.Label htmlFor={"filter-" + element.filterName}>{element.label}</Form.Label>
                             {formInput}
                         </Col>
                     ];
                 })
             }
-        </Row>
-        <Row className="justify-content-center mt-4">
-            <Col className="col-2">
+            <Col sm className="text-center mrg-bottom-button">
                 <ButtonBootstrap variant="secondary" text="Réinitialiser les filtres" onClick={
                     (e) => {
                         formFilterFields[1].value = "";
@@ -95,7 +94,7 @@ export default function Filter(props)
                     }
                 }/>
             </Col>
-            <Col className="col-2">
+            <Col sm className="text-center">
                 <ButtonBootstrap 
                     variant="success"
                     target="_blank"
