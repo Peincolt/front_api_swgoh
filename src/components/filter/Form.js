@@ -85,7 +85,7 @@ export default function Filter(props)
                     ];
                 })
             }
-            <Col sm className="text-center mrg-bottom-button">
+            <Col sm className="text-center mrg-bottom-button mt-4">
                 <ButtonBootstrap variant="secondary" text="Réinitialiser les filtres" onClick={
                     (e) => {
                         formFilterFields[1].value = "";

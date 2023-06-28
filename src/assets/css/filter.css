@@ -2,6 +2,10 @@
     .mrg-bottom-inputs {
         margin-bottom: 15px;
     }
+
+    .mt-4 {
+        margin-top: 1.5rem!important;
+    }
 }
 
 @media screen and (max-width: 576px) {

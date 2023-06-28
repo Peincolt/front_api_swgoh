@@ -3,6 +3,7 @@ import importGuildViewSquad from "../../code/viewSquad/importGuildViewSquad"
 import { useLoaderData } from "react-router-dom";
 import ButtonBootstrap from "../bootstrap-components/ButtonBootstrap";
 import ArraySquad from "./ArraySquad";
+import '../../assets/css/view-squad.css'
 
 export default function Squad(props)
 {
@@ -10,21 +11,17 @@ export default function Squad(props)
     console.log(squad)
     return (
         <>
-            <Row className="mt-4 justify-content-center">
-                <Col className="col-5">
+            <Row className="mt-4 justify-content-center align-items-center">
+                <Col className="col-6 align-text">
                     <h1>{squad.name}</h1>
                 </Col>
-                <Col>
-                    <Row>
-                        <Col>
-                            <ButtonBootstrap variant="dark" text="Modifier l'escouade"/>
-                        </Col>
-                        <Col>
-                            <ButtonBootstrap variant="primary" text="Exporter l'escouade" target="_blank" onClick = { e => {
-                                window.open(`http://www.api-hgamers.fr/api/guild/uuwcpRBoStWfogZersAvJA/squad/${squad.uniqueIdentifier}/export`)
-                            }} />
-                        </Col>
-                    </Row>
+                <Col sm className="text-center mt-4-buttons">
+                    <ButtonBootstrap variant="dark" text="Modifier l'escouade"/>
+                </Col>
+                <Col sm className="text-center">
+                    <ButtonBootstrap variant="primary" text="Exporter l'escouade" target="_blank" onClick = { e => {
+                        window.open(`http://www.api-hgamers.fr/api/guild/uuwcpRBoStWfogZersAvJA/squad/${squad.uniqueIdentifier}/export`)
+                    }} />
                 </Col>
             </Row>
             <Row className="mt-4 justify-content-center">
