@@ -2,18 +2,25 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
-import Home from './routes/Root';
 import Error404 from './routes/Error404';
 import reportWebVitals from './reportWebVitals';
 import { loader as rootLoader } from './components/filter/FilterSquad'
+import { loader as squadLoader } from './components/view-squad/Squad'
+import ViewSquad from './routes/ViewSquad';
+import Root from './routes/Root';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home/>,
+    element: <Root/>,
     errorElement: <Error404/>,
     loader: rootLoader
+  },
+  {
+    path: "/squad/:squadId",
+    element: <ViewSquad/>,
+    loader: squadLoader
   }
 ])
 root.render(
