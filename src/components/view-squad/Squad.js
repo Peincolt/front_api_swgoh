@@ -8,7 +8,6 @@ import '../../assets/css/view-squad.css'
 export default function Squad(props)
 {
     const { squad } = useLoaderData()
-    console.log(squad)
     return (
         <>
             <Row className="mt-4 justify-content-center align-items-center">

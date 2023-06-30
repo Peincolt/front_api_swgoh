@@ -6,8 +6,10 @@ import Error404 from './routes/Error404';
 import reportWebVitals from './reportWebVitals';
 import { loader as rootLoader } from './components/filter/FilterSquad'
 import { loader as squadLoader } from './components/view-squad/Squad'
+import { loader as unitsLoader } from './components/create-squad/Form'
 import ViewSquad from './routes/ViewSquad';
 import Root from './routes/Root';
+import CreateSquad from './routes/CreateSquad';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter([
@@ -21,6 +23,11 @@ const router = createBrowserRouter([
     path: "/squad/:squadId",
     element: <ViewSquad/>,
     loader: squadLoader
+  },
+  {
+    path: "/squad/create",
+    element: <CreateSquad/>,
+    loader: unitsLoader
   }
 ])
 root.render(

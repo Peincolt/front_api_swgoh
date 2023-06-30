@@ -18,7 +18,7 @@ export default function Filter(props)
             label : 'Nom de la team',
             value : filterData.name,
             placeholder : "Nom de la team",
-            event : (e) => setFilterData({...filterData, name : e.target.value})
+            'onChange' : (e) => setFilterData({...filterData, name : e.target.value})
         },
         {
             key : 1,
@@ -39,7 +39,7 @@ export default function Filter(props)
                     label : 'Vaisseaux'
                 }
             ],
-            event : (e) => setFilterData({...filterData, unitType : e.target.value})
+            onChange : (e) => setFilterData({...filterData, unitType : e.target.value})
         },
         {
             key : 2,
@@ -60,7 +60,7 @@ export default function Filter(props)
                     label : 'Défense'
                 }
             ],
-            event : (e) => setFilterData({...filterData, squadType : e.target.value})
+            onChange : (e) => setFilterData({...filterData, squadType : e.target.value})
         }
     ];
 
@@ -71,10 +71,10 @@ export default function Filter(props)
                 formFilterFields.map((element) => {
                     switch (element.type) {
                         case 'text' :
-                            var formInput = <Input name={element.name} placeholder = {element.placeholder} value={element.value} event={element.event}/>
+                            var formInput = <Input type={element.type} name={element.name} placeholder = {element.placeholder} value={element.value} onChange={element.onChange}/>
                             break;
                         case 'select' :
-                            var formInput = <Select name={element.name} defaultValue={element.defaultValue} options={element.options} value={element.value} event={element.event}/>
+                            var formInput = <Select name={element.name} defaultValue={element.defaultValue} options={element.options} value={element.value} onChange={element.onChange}/>
                             break;
                     }
                     return [

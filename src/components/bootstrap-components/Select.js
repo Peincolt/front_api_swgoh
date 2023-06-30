@@ -1,7 +1,7 @@
 import { Form } from "react-bootstrap";
 
 export default function Select (props) {
-    return <Form.Select id={props.name} onChange={props.event} value={props.value}>
+    return <Form.Select id={props.name} onChange={props.onChange} value={props.value}>
         <option value="">{props.defaultValue}</option>
         {
             props.options.map(function (option, key) {
