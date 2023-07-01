@@ -1,6 +1,5 @@
 export default function squadReducer(squad, action)
 {
-    console.log(action)
     switch (action.type) {
         case 'add':
             return [
@@ -9,16 +8,10 @@ export default function squadReducer(squad, action)
                     name : action.name
                 }
             ]
-
-        case 'edit':
-            /*squad.map(element => {
-                if (element.id === action.id) {
-                    element.
-                }
-            })*/
-            break;
         case 'remove':
             return squad.filter(element => element.id !== action.id);
+        case 'clean':
+            return []
         default:
             return squad;
     }

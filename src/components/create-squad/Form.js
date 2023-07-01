@@ -8,12 +8,15 @@ import FormGroup from "../bootstrap-components/FormGroup";
 import squadReducer from './reducer/squadReducer';
 import Input from '../bootstrap-components/Input';
 import ButtonBootstrap from '../bootstrap-components/ButtonBootstrap';
+import { checkUnitNotPresent, unitExist } from './helper/VerifUnits';
 
 export default function Form(props)
 {
     let [formData, setFormData] = useState({});
     let [unitField, setUnitField] = useState('');
+    let [unitFieldStatus, setUnitFieldStatus] = useState('');
     let { heroes, ships } = useLoaderData();
+    let [currentList, setCurrentList] = useState([]);
     let [squad, dispatch] = useReducer(squadReducer,[]);
     let formFilterFields = [
         {
@@ -36,6 +39,7 @@ export default function Form(props)
             attributes : {
                 name : 'type',
                 defaultValue : "Type d'unité",
+                focus: true,
                 options : [
                     {
                         key : crypto.randomUUID(),
@@ -48,7 +52,17 @@ export default function Form(props)
                         label : 'Vaisseaux'
                     }
                 ],
-                onChange : (e) => setFormData({...formData, unitType : e.target.value})
+                onChange : (e) => {
+                    setFormData({...formData, unitType : e.target.value})
+                    if (e.target.value == 'ship') {
+                        setCurrentList(ships)
+                    } else {
+                        setCurrentList(heroes)
+                    }
+                    dispatch({
+                        type: 'clean'
+                    })
+                }
             },
             formAttributes : {
                 className: "mb-4-lg"
@@ -83,14 +97,19 @@ export default function Form(props)
 
     function addUnit(unitName)
     {
-        if (!checkUnitNotPresent(unitName)) {
-            dispatch({
-                type: 'add',
-                id: id++,
-                name: unitName
-            })
-            return true;
+        if (!checkUnitNotPresent(unitName, squad)) {
+            if (unitExist(unitName, currentList)) {
+                dispatch({
+                    type: 'add',
+                    id: id++,
+                    name: unitName
+                })
+                return true;
+            }
+            setUnitFieldStatus('L\'unité que vous essayer d\'ajouter n\'existe pas');
+            return false;
         }
+        setUnitFieldStatus('L\'unité que vous essayez d\'ajouter existe déjà');
         return false;
     }
 
@@ -100,20 +119,6 @@ export default function Form(props)
             type: 'delete',
             id: unitId
         })
-    }
-
-    function checkUnitNotPresent(unitName)
-    {
-        let present = false;
-        if (squad.length) {
-            squad.forEach(element => {
-                if (element.name === unitName) {
-                    present = true;
-                    return true;
-                }
-            });
-            return present;
-        }
     }
 
     return (
@@ -149,13 +154,18 @@ export default function Form(props)
                     <Col lg={4}>
                         <ButtonBootstrap type="primary" text="Ajouter" onClick={e => {
                                 e.preventDefault();
-                                if (addUnit(unitField)) {
-                                    setUnitField('');
+                                if (currentList.length) {
+                                    if (addUnit(unitField)) {
+                                        setUnitField('');
+                                        setUnitFieldStatus('');
+                                    }
                                 }
+                                setUnitFieldStatus('Vous devez choisir le type d\'unité avant de pouvoir ajouter une unité');
                             }
                         }/>
                     </Col>
                 </Row>
+                {(unitFieldStatus !== '') ? <Row><Col><div className='text-danger'>{unitFieldStatus}</div></Col></Row>: ''}
                 <Row className='mt-4'>
                     {
                         (squad.length > 0) ? 
