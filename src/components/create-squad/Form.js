@@ -9,6 +9,7 @@ import squadReducer from './reducer/squadReducer';
 import Input from '../bootstrap-components/Input';
 import ButtonBootstrap from '../bootstrap-components/ButtonBootstrap';
 import { checkUnitNotPresent, unitExist } from './helper/VerifUnits';
+import Autocomplete from '../autocomplete/Autocomplete';
 
 export default function Form(props)
 {
@@ -94,9 +95,16 @@ export default function Form(props)
             }
         }
     ];
-
+    let inputProps = {
+        name: "unitField",
+        onChange: (event, {newValue}) => {setUnitField(newValue)},
+        className: "form-control",
+        placeholder: "Nom de l'unité à ajouter",
+        value: unitField
+    }
     function addUnit(unitName)
     {
+        console.log(unitName)
         if (!checkUnitNotPresent(unitName, squad)) {
             if (unitExist(unitName, currentList)) {
                 dispatch({
@@ -148,7 +156,8 @@ export default function Form(props)
                     <Col lg={4} className='mb-4-lg'>
                         <FormBootstrap.Group>
                             <FormBootstrap.Label>Nom de l'unité à ajouter</FormBootstrap.Label>
-                            <Input name="unitField" value={unitField} onChange={e => setUnitField(e.target.value)}/>
+                            <Autocomplete inputProps={inputProps} list={currentList}/>
+                            {/*<Input name="unitField" value={unitField} onChange={e => setUnitField(e.target.value)}/>*/}
                         </FormBootstrap.Group>
                     </Col>
                     <Col lg={4}>
@@ -159,8 +168,9 @@ export default function Form(props)
                                         setUnitField('');
                                         setUnitFieldStatus('');
                                     }
+                                } else {
+                                    setUnitFieldStatus('Vous devez choisir le type d\'unité avant de pouvoir ajouter une unité');
                                 }
-                                setUnitFieldStatus('Vous devez choisir le type d\'unité avant de pouvoir ajouter une unité');
                             }
                         }/>
                     </Col>
