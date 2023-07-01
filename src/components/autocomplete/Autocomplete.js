@@ -14,8 +14,8 @@ export default function Autocomplete(props)
         );
     };
     const getSuggestionValue = suggestion => suggestion.name
-    const renderSuggestion = suggestion => (
-        <div className='form-control' onMouseOver={e => e.target.classList.add('focus')} onMouseOut={e => e.target.classList.remove('focus')}>
+    const renderSuggestion = (suggestion, {isHighlighted }) => (
+        <div className={`form-control ${isHighlighted ? 'focus' : ''}`} onMouseOver={e => e.target.classList.add('focus')} onMouseOut={e => e.target.classList.remove('focus')}>
           {suggestion.name}
         </div>
     );
