@@ -35,6 +35,7 @@ export default function Autocomplete(props)
           renderSuggestion={renderSuggestion}
           inputProps={props.inputProps}
           theme={theme}
+          onSuggestionSelected={props.onSuggestionSelected}
         />
       );
 }

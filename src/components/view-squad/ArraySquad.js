@@ -2,7 +2,6 @@ import Table from 'react-bootstrap/Table';
 
 export default function ArraySquad(props)
 {
-    console.log(Object.entries(props.squad.units))
     // Pour chaque units, il faut aller dans l'objet chercher l'info qu'on veut ! props.squad.units.nom.player.data
     // Besoin de trier par joueur et non pas par perso => Récupère tous les joueurs via Object.keys d'un des persos de la squad.
     // Pour chaque joueur, on va chercher les infos dans les deux objet. Voir comment pour utiliser un nom de variable comme nom de clé

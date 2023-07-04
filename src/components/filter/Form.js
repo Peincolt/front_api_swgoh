@@ -74,7 +74,7 @@ export default function Filter(props)
                             var formInput = <Input type={element.type} name={element.name} placeholder = {element.placeholder} value={element.value} onChange={element.onChange}/>
                             break;
                         case 'select' :
-                            var formInput = <Select name={element.name} defaultValue={element.defaultValue} options={element.options} value={element.value} onChange={element.onChange}/>
+                            var formInput = <Select name={element.name} defaultValue={element.defaultValue} options={element.options} value={element.value} onChange={element.onChange} required="false"/>
                             break;
                     }
                     return [

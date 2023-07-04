@@ -14,14 +14,19 @@ export function checkUnitNotPresent(unitName, squad)
 
 export function unitExist(unitName, currentList)
 {
-    let exist = false;
+    let baseId = false;
     if (currentList.length) {
         currentList.forEach(element => {
-            if (element.name == unitName) {
-                exist = true;
+            if (element.name === unitName) {
+                baseId = element.baseId;
                 return true;
             }
         });
     }
-    return exist;
+    return baseId;
+}
+
+export function getIndexByNextId(squad, nextId)
+{
+    return squad.findIndex(element => element.id === nextId);
 }
