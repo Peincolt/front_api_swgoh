@@ -26,6 +26,20 @@ export function unitExist(unitName, currentList)
     return baseId;
 }
 
+export function getNameByBaseId(baseId, currentList)
+{
+    let name = false;
+    if (currentList.length) {
+        currentList.forEach(element => {
+            if (element.baseId === baseId) {
+                name = element.name;
+                return true;
+            }
+        });
+    }
+    return name;
+}
+
 export function getIndexByNextId(squad, nextId)
 {
     return squad.findIndex(element => element.id === nextId);

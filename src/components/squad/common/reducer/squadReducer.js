@@ -1,4 +1,4 @@
-import { getIndexByNextId } from '../helper/VerifUnits'
+import { getIndexByNextId } from '../../helper/VerifUnits'
 
 export default function squadReducer(squad, action)
 {

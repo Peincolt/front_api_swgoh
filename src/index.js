@@ -5,11 +5,13 @@ import './index.css';
 import Error404 from './routes/Error404';
 import reportWebVitals from './reportWebVitals';
 import { loader as rootLoader } from './components/filter/FilterSquad'
-import { loader as squadLoader } from './components/view-squad/Squad'
-import { loader as unitsLoader } from './components/create-squad/Form'
+import { loader as squadLoader } from './components/squad/view-squad/Squad'
+import { loader as unitsLoader } from './components/squad/create-squad/Form'
+import { loader as squadEditLoader } from './components/squad/edit-squad/Form'
 import ViewSquad from './routes/ViewSquad';
 import Root from './routes/Root';
 import CreateSquad from './routes/CreateSquad';
+import UpdateSquad from './routes/UpdateSquad';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter([
@@ -28,6 +30,11 @@ const router = createBrowserRouter([
     path: "/squad/create",
     element: <CreateSquad/>,
     loader: unitsLoader
+  },
+  {
+    path: "/squad/edit/:squadId",
+    element: <UpdateSquad/>,
+    loader: squadEditLoader
   }
 ])
 root.render(

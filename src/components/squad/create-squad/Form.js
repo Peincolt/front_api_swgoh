@@ -1,14 +1,14 @@
-import '../../assets/css/create-squad.css';
+import '../../../assets/css/create-squad.css';
 import { Col, Row } from "react-bootstrap";
-import importUnits from "../../code/create-squad/importUnits"
+import importUnits from "../../../code/create-squad/importUnits"
 import { useLoaderData } from "react-router-dom";
 import { Form as FormBootstrap } from 'react-bootstrap'
 import { useReducer, useRef, useState } from "react";
-import FormGroup from "../bootstrap-components/FormGroup";
-import squadReducer from './reducer/squadReducer';
-import ButtonBootstrap from '../bootstrap-components/ButtonBootstrap';
-import { checkUnitNotPresent, unitExist } from './helper/VerifUnits';
-import Autocomplete from '../autocomplete/Autocomplete';
+import FormGroup from "../../bootstrap-components/FormGroup";
+import squadReducer from '../common/reducer/squadReducer';
+import ButtonBootstrap from '../../bootstrap-components/ButtonBootstrap';
+import { checkUnitNotPresent, unitExist } from '../helper/VerifUnits';
+import Autocomplete from '../../autocomplete/Autocomplete';
 
 export default function Form(props)
 {
@@ -18,6 +18,7 @@ export default function Form(props)
     let { heroes, ships } = useLoaderData();
     let [currentList, setCurrentList] = useState([]);
     let [squad, dispatch] = useReducer(squadReducer,[]);
+    let [id, setId] =useState(0);
     let formFilterFields = [
         {
             key : 0,
@@ -121,6 +122,7 @@ export default function Form(props)
                     name: unitName,
                     baseId: baseId
                 })
+                setId(id)
                 return true;
             }
             setUnitFieldStatus('L\'unité que vous essayer d\'ajouter n\'existe pas');
@@ -162,10 +164,13 @@ export default function Form(props)
         const jsonResponse = await reponse.json();
         if (jsonResponse.result.message !== undefined) {
             alert(jsonResponse.result.message)
+            document.location.href='/squad/'+jsonResponse.result.unique_identifier;
         } else {
             alert('Une erreur est survenue lors de la création de l\'escouade dans la base de données');
         }
     }
+
+    console.log(id)
 
     return (
         <>
@@ -261,5 +266,3 @@ export async function loader()
     const units = await importUnits()
     return units
 }
-
-let id = 0;

@@ -1,7 +1,7 @@
 import Menu from "../components/menu/Menu";
-import Form from "../components/squad/create-squad/Form";
+import Form from "../components/squad/edit-squad/Form";
 
-export default function CreateSquad()
+export default function UpdateSquad (props)
 {
     return (
         <>

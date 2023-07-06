@@ -17,6 +17,7 @@ export default function Filter(props)
             name : 'name',
             label : 'Nom de la team',
             value : filterData.name,
+            required: false,
             placeholder : "Nom de la team",
             'onChange' : (e) => setFilterData({...filterData, name : e.target.value})
         },
@@ -26,6 +27,7 @@ export default function Filter(props)
             name : 'type',
             label : 'Type d\'unité',
             value: filterData.unitType,
+            required: false,
             defaultValue : "Type d'unité",
             options : [
                 {
@@ -47,6 +49,7 @@ export default function Filter(props)
             name : 'emplacement',
             label : 'Emplacement',
             value : filterData.squadType,
+            required: false,
             defaultValue : "Attaque/Défense",
             options : [
                 {
@@ -74,7 +77,7 @@ export default function Filter(props)
                             var formInput = <Input type={element.type} name={element.name} placeholder = {element.placeholder} value={element.value} onChange={element.onChange}/>
                             break;
                         case 'select' :
-                            var formInput = <Select name={element.name} defaultValue={element.defaultValue} options={element.options} value={element.value} onChange={element.onChange} required="false"/>
+                            var formInput = <Select name={element.name} defaultValue={element.defaultValue} options={element.options} value={element.value} onChange={element.onChange} required={element.required}/>
                             break;
                     }
                     return [

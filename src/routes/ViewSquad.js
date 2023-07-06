@@ -1,5 +1,5 @@
 import Menu from "../components/menu/Menu";
-import Squad from "../components/view-squad/Squad";
+import Squad from "../components/squad/view-squad/Squad";
 
 export default function ViewSquad(props)
 {

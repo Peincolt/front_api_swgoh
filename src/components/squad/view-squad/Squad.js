@@ -1,9 +1,9 @@
 import { Row, Col } from "react-bootstrap";
-import importGuildViewSquad from "../../code/viewSquad/importGuildViewSquad"
+import importGuildViewSquad from "../../../code/viewSquad/importGuildViewSquad"
 import { useLoaderData } from "react-router-dom";
-import ButtonBootstrap from "../bootstrap-components/ButtonBootstrap";
+import ButtonBootstrap from "../../bootstrap-components/ButtonBootstrap";
 import ArraySquad from "./ArraySquad";
-import '../../assets/css/view-squad.css'
+import '../../../assets/css/view-squad.css'
 
 export default function Squad(props)
 {
