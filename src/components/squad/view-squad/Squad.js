@@ -4,6 +4,7 @@ import { useLoaderData } from "react-router-dom";
 import ButtonBootstrap from "../../bootstrap-components/ButtonBootstrap";
 import ArraySquad from "./ArraySquad";
 import '../../../assets/css/view-squad.css'
+import { Link } from "react-router-dom"
 
 export default function Squad(props)
 {
@@ -15,7 +16,9 @@ export default function Squad(props)
                     <h1>{squad.name}</h1>
                 </Col>
                 <Col sm className="text-center mt-4-buttons">
+                <Link to={`/squad/edit/${squad.uniqueIdentifier}`} target="_blank">
                     <ButtonBootstrap variant="dark" text="Modifier l'escouade"/>
+                </Link>
                 </Col>
                 <Col sm className="text-center">
                     <ButtonBootstrap variant="primary" text="Exporter l'escouade" target="_blank" onClick = { e => {

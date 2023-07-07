@@ -7,9 +7,9 @@ import { useEffect } from "react";
 
 export default function Form(props)
 {
-    let {squad, units, currentList} = useLoaderData()
+    let {squad, units, squadUnits, currentList} = useLoaderData()
     return (
-        <CommonForm heroes={units.heroes} ships={units.ships} squad={squad} currentList={currentList} id={squad.units.length}/>
+        <CommonForm heroes={units.heroes} ships={units.ships} squad={squad} units={squadUnits} currentList={currentList} id={squadUnits.length}/>
     )
 }
 
@@ -21,8 +21,9 @@ export async function loader({params})
     const squad = { name, unitType: type, squadType: usedFor, uniqueIdentifier, units:[] }
     const currentList = type === 'ship' ? units.ships : units.heroes
     let id = 0;
+    let squadUnits = [];
     Object.entries(squadData.units).forEach(element => {
-        squad.units.push({id: id++, baseId: element[0], name: getNameByBaseId(element[0], currentList)})
+        squadUnits.push({id: id++, baseId: element[0], name: getNameByBaseId(element[0], currentList)})
     })
-    return {squad, units, currentList}
+    return {squad, units, squadUnits, currentList}
 }

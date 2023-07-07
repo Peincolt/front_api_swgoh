@@ -15,7 +15,7 @@ export function Form(props)
     let [unitFieldStatus, setUnitFieldStatus] = useState('');
     let { heroes, ships } = props;
     let [currentList, setCurrentList] = useState(props.currentList);
-    let [squad, dispatch] = useReducer(squadReducer,props.squad.units);
+    let [squad, dispatch] = useReducer(squadReducer,props.units);
     let [id, setId] = useState(props.id)
     let formFilterFields = [
         {
@@ -57,7 +57,7 @@ export function Form(props)
                 ],
                 onChange : (e) => {
                     setFormData({...formData, unitType : e.target.value})
-                    if (e.target.value == 'ship') {
+                    if (e.target.value === 'ship') {
                         setCurrentList(ships)
                     } else {
                         setCurrentList(heroes)
@@ -123,7 +123,6 @@ export function Form(props)
                     name: unitName,
                     baseId: baseId
                 })
-                console.log(id)
                 setId(id);
                 return true;
             }
