@@ -16,8 +16,8 @@ export default function Filter(props)
             type : 'text',
             name : 'name',
             label : 'Nom de la team',
-            value : filterData.name,
             required: false,
+            value: filterData.name,
             placeholder : "Nom de la team",
             'onChange' : (e) => setFilterData({...filterData, name : e.target.value})
         },
@@ -26,8 +26,8 @@ export default function Filter(props)
             type : 'select',
             name : 'type',
             label : 'Type d\'unité',
-            value: filterData.unitType,
             required: false,
+            value: filterData.type,
             defaultValue : "Type d'unité",
             options : [
                 {
@@ -41,14 +41,14 @@ export default function Filter(props)
                     label : 'Vaisseaux'
                 }
             ],
-            onChange : (e) => setFilterData({...filterData, unitType : e.target.value})
+            onChange : (e) => setFilterData({...filterData, type : e.target.value})
         },
         {
             key : 2,
             type : 'select',
             name : 'emplacement',
             label : 'Emplacement',
-            value : filterData.squadType,
+            value : filterData.used_for,
             required: false,
             defaultValue : "Attaque/Défense",
             options : [
@@ -63,7 +63,7 @@ export default function Filter(props)
                     label : 'Défense'
                 }
             ],
-            onChange : (e) => setFilterData({...filterData, squadType : e.target.value})
+            onChange : (e) => setFilterData({...filterData, used_for : e.target.value})
         }
     ];
 
@@ -93,7 +93,7 @@ export default function Filter(props)
                     (e) => {
                         formFilterFields[1].value = "";
                         formFilterFields[2].value = "";
-                        setFilterData({name:'', unitType:'', squadType:''})
+                        setFilterData({name:'', type:'', used_for:''})
                     }
                 }/>
             </Col>
@@ -115,7 +115,7 @@ export default function Filter(props)
                                         exportUrl+="&"+key+"="+value
                                     }
                                 }
-                              }
+                            }
                             window.open(exportUrl)
                         }
                     }

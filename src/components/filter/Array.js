@@ -9,8 +9,8 @@ export default function Array(props)
     const { filterData, setFilderData } = useContext(FilterContext)
     const filterContent = props.content.flatMap((element) => {
         return filterData.name && !element.name.includes(filterData.name) ? []
-            : filterData.squadType && filterData.squadType !== element.used_for ? []
-            : filterData.unitType && filterData.unitType !== element.type ? []
+            : filterData.used_for && filterData.used_for !== element.used_for ? []
+            : filterData.type && filterData.type !== element.type ? []
             : element
     })
 

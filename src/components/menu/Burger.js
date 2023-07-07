@@ -6,7 +6,7 @@ export default function Burger()
     return (
         <Nav>
             <NavDropdown title="Menu">
-                <NavDropdown.Item href="#team">Créer une team</NavDropdown.Item>
+                <NavDropdown.Item href="/squad/create">Créer une team</NavDropdown.Item>
             </NavDropdown>
         </Nav>
     )
