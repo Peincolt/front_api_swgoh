@@ -1,5 +1,6 @@
 import Menu from '../components/menu/Menu.js';
 import FilterSquad from '../components/filter/FilterSquad.js';
+import FilterContextProvider from '../components/filter/context/FilterContext.js';
 
 export default function Root() {
   return (
@@ -8,7 +9,9 @@ export default function Root() {
         <Menu/>
       </div>
       <div id="content" className='container'>
-        <FilterSquad/>
+        <FilterContextProvider>
+          <FilterSquad/>
+        </FilterContextProvider>
       </div>
     </>
   );

@@ -166,7 +166,7 @@ export function Form(props)
             })
         } else {
             reponse = await fetch(`http://www.api-hgamers.fr/api/squad/${formData.uniqueIdentifier}/update`,{
-                method: 'POST',
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
