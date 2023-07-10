@@ -15,8 +15,8 @@ export default function importGuildSquad(headerArray)
           let jsonKeys = Object.keys(json[0])
           json.map(obj => {
             obj['icon'] = <>
-              <Link to={`/squad/${obj.unique_identifier}`} target="_blank"><Search/></Link>
-              <Link to={`/squad/edit/${obj.unique_identifier}`} target="_blank"><Pencil/></Link>
+              <Link to={`/squad/${obj.unique_identifier}`} target="_blank" className="me-3"><Search/></Link>
+              <Link to={`/squad/edit/${obj.unique_identifier}`} target="_blank" className="me-3"><Pencil/></Link>
             </>
             for (let x = 0; x < jsonKeys.length; x++) {
                 if (!keysHeader.includes(jsonKeys[x])) {

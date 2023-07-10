@@ -6,7 +6,7 @@ import importGuildSquad from "../../code/filterSquad/importGuildSquad"
 import { FilterContext } from "./context/FilterContext";
 import traduction from "../../assets/traduction/squad";
 
-const headerArray = {name: 'Nom de l\'équipe', used_for: 'Utilisée pour', type: 'Type d\'unités', };
+const headerArray = {name: 'Nom de l\'équipe', used_for: 'Utilisée pour', type: 'Type d\'unités', action: 'Actions'};
 
 export default function FilterSquad()
 {
