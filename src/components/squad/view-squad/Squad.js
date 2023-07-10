@@ -12,8 +12,8 @@ export default function Squad(props)
     return (
         <>
             <Row className="mt-4 justify-content-center align-items-center">
-                <Col className="col-6 align-text">
-                    <h1>{squad.name}</h1>
+                <Col className="col-6 align-text text-truncate text-nowrap">
+                    <h1 className="no-overflow" title={squad.name}>{squad.name}</h1>
                 </Col>
                 <Col sm className="text-center mt-4-buttons">
                 <Link to={`/squad/edit/${squad.uniqueIdentifier}`} target="_blank">

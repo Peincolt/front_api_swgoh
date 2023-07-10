@@ -1,16 +1,17 @@
 import { Container, Navbar } from "react-bootstrap";
 import '../../assets/css/menu.css';
 import Banner from "./Banner";
-import Burger from "./Burger";
+import Items from "./Items";
 
 export default function Menu()
 {
     return (
-        <Navbar bg="dark" variant="dark">
+        <Navbar bg="dark" variant="dark" expand="sm">
             <Container>
+                <Banner/>
+                <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse>
-                    <Banner/>
-                    <Burger/>
+                    <Items/>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
