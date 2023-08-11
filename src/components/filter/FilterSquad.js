@@ -30,7 +30,7 @@ export default function FilterSquad()
         copieElement.icon  = <>
             <Link to={`/squad/${copieElement.unique_identifier}`} target="_blank" className="me-3"><Search/></Link>
             <Link to={`/squad/edit/${copieElement.unique_identifier}`} target="_blank" className="me-3"><Pencil/></Link>
-            <btn class="btn btn-link me-3" style={{padding: "0", margin:"0", position: "absolute"}} onClick={deleteSquad.bind(this,copieElement['unique_identifier'])} taskid={copieElement.unique_identifier}><Delete/></btn>
+            <button type="button" className="btn btn-link me-3" style={{padding: "0", margin:"0", position: "absolute"}} onClick={deleteSquad.bind(this,copieElement['unique_identifier'])} taskid={copieElement.unique_identifier}><Delete/></button>
         </>
         for (let x = 0; x < jsonKeys.length; x++) {
             if (!keysHeader.includes(jsonKeys[x])) {
