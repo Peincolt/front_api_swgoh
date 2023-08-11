@@ -1,15 +1,15 @@
-ul {
+#div-autcomplete ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-li {
+#div-autcomplete li {
     display: block;
     text-align: center;
 }
 
-.focus {
+#div-autcomplete .focus {
     border-color: #86b7fe;
     background-color: #fff;
     outline: 0;

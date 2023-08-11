@@ -3,14 +3,14 @@ import importGuildViewSquad from "../../../code/viewSquad/importGuildViewSquad"
 import { useLoaderData } from "react-router-dom";
 import ButtonBootstrap from "../../bootstrap-components/ButtonBootstrap";
 import ArraySquad from "./ArraySquad";
-import '../../../assets/css/view-squad.css'
+import '../../../assets/css/responsive.css'
 import { Link } from "react-router-dom"
 
 export default function Squad(props)
 {
     const { squad } = useLoaderData()
     return (
-        <>
+        <div id="view-squad">
             <Row className="mt-4 justify-content-center align-items-center">
                 <Col className="col-6 align-text text-truncate text-nowrap">
                     <h1 className="no-overflow" title={squad.name}>{squad.name}</h1>
@@ -29,7 +29,7 @@ export default function Squad(props)
             <Row className="mt-4 justify-content-center">
                 <ArraySquad squad={squad}/>
             </Row>  
-        </>
+        </div>
       );
 }
 

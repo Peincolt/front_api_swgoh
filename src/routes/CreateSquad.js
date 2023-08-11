@@ -1,5 +1,5 @@
 import Menu from "../components/menu/Menu";
-import Form from "../components/squad/create-squad/Form";
+import Page from "../components/squad/create-squad/Page";
 
 export default function CreateSquad()
 {
@@ -9,7 +9,7 @@ export default function CreateSquad()
             <Menu/>
           </div>
           <div id="content" className='container'>
-            <Form/>
+            <Page/>
           </div>
         </>
       );

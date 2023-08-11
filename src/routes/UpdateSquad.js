@@ -1,5 +1,5 @@
 import Menu from "../components/menu/Menu";
-import Form from "../components/squad/edit-squad/Form";
+import Page from "../components/squad/edit-squad/Page";
 
 export default function UpdateSquad (props)
 {
@@ -9,7 +9,7 @@ export default function UpdateSquad (props)
             <Menu/>
           </div>
           <div id="content" className='container'>
-            <Form/>
+            <Page/>
           </div>
         </>
       );

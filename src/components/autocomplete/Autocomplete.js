@@ -27,6 +27,7 @@ export default function Autocomplete(props)
     };
 
     return (
+      <div id='div-autcomplete'>
         <Autosuggest
           suggestions={suggestions}
           onSuggestionsFetchRequested={onSuggestionsFetchRequested}
@@ -37,5 +38,6 @@ export default function Autocomplete(props)
           theme={theme}
           onSuggestionSelected={props.onSuggestionSelected}
         />
+      </div>
       );
 }

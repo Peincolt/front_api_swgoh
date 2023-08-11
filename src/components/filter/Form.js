@@ -4,7 +4,7 @@ import Input from '../bootstrap-components/Input';
 import ButtonBootstrap from "../bootstrap-components/ButtonBootstrap";
 import { useContext } from "react";
 import { FilterContext } from "./context/FilterContext";
-import '../../assets/css/filter.css';
+import '../../assets/css/responsive.css';
 
 export default function Filter(props)
 {

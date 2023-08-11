@@ -1,4 +1,4 @@
-import '../../../assets/css/create-squad.css';
+import '../../../assets/css/responsive.css';
 import { Col, Row } from "react-bootstrap";
 import { Form as FormBootstrap } from 'react-bootstrap'
 import { useReducer, useState } from "react";
@@ -187,7 +187,7 @@ export function Form(props)
         <>
             <Row>
                 <Col className="text-center mt-4">
-                    <h1>Création d'une nouvelle escouade</h1>
+                    <h1>{squad.length === 0 ? "Création d'une nouvelle escouade" : `Modification de l'escouade ${formData.name}`}</h1>
                 </Col>
             </Row>
             <FormBootstrap className="mt-4" onSubmit={validFormulaire}>
