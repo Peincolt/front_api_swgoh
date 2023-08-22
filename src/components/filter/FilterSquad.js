@@ -1,6 +1,6 @@
 import Form from "./Form"
 import Array from "./Array"
-import { useState, useContext, useMemo } from "react";
+import { useState, useContext, useMemo, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import importGuildSquad from "../../code/filterSquad/importGuildSquad"
 import { FilterContext } from "./context/FilterContext";
@@ -9,13 +9,16 @@ import { Link } from "react-router-dom"
 import Pencil from "../../components/boxicon-components/Pencil"
 import Search from "../../components/boxicon-components/Search"
 import Delete from "../boxicon-components/Delete";
+import { GlobalContext } from "../common/context/GlobalContextProvider";
 
 const headerArray = {name: 'Nom de l\'équipe', used_for: 'Utilisée pour', type: 'Type d\'unités', action: 'Actions'};
 
 export default function FilterSquad()
 {
-  const [ squads, setSquads ] = useState(useLoaderData());
-  const { filterData, setFilterData } = useContext(FilterContext)
+  const { filterData } = useContext(FilterContext)
+  const { setGlobalData } = useContext(GlobalContext)
+  const [ squads, setSquads ] = useState(useLoaderData()[0]);
+  setGlobalData({spinner: useLoaderData()[1]})
   const squadFiltered = useMemo(() => {
     return squads.map(element => {
       let copieElement = {...element};
@@ -67,5 +70,5 @@ export default function FilterSquad()
 export async function loader()
 {
     const squads = await importGuildSquad(headerArray)
-    return squads
+    return [squads, false];
 }

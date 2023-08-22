@@ -1,16 +1,11 @@
-import Menu from "../components/menu/Menu";
 import Page from "../components/squad/create-squad/Page";
+import Skeleton from '../components/common/Skeleton.js';
 
 export default function CreateSquad()
 {
     return (
-        <>
-          <div id="menu">
-            <Menu/>
-          </div>
-          <div id="content" className='container'>
-            <Page/>
-          </div>
-        </>
+        <Skeleton>
+          <Page/>
+        </Skeleton>
       );
 }

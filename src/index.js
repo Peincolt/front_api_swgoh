@@ -9,7 +9,7 @@ import { loader as squadLoader } from './components/squad/view-squad/Squad'
 import { loader as unitsLoader } from './components/squad/create-squad/Form'
 import { loader as squadEditLoader } from './components/squad/edit-squad/Form'
 import ViewSquad from './routes/ViewSquad';
-import Root from './routes/Root';
+import Home from './routes/Home';
 import CreateSquad from './routes/CreateSquad';
 import UpdateSquad from './routes/UpdateSquad';
 
@@ -17,7 +17,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root/>,
+    element: <Home/>,
     errorElement: <Error404/>,
     loader: rootLoader
   },

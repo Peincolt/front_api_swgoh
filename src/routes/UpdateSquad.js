@@ -1,16 +1,11 @@
-import Menu from "../components/menu/Menu";
 import Page from "../components/squad/edit-squad/Page";
+import Skeleton from "../components/common/Skeleton";
 
 export default function UpdateSquad (props)
 {
     return (
-        <>
-          <div id="menu">
-            <Menu/>
-          </div>
-          <div id="content" className='container'>
-            <Page/>
-          </div>
-        </>
-      );
+      <Skeleton>
+        <Page/>
+      </Skeleton>
+    );
 }
