@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import Error404 from './routes/Error404';
 import reportWebVitals from './reportWebVitals';
-import { loader as rootLoader } from './components/filter/FilterSquad'
+import { loader as rootLoader } from './routes/Home'
 import { loader as squadLoader } from './components/squad/view-squad/Squad'
 import { loader as unitsLoader } from './components/squad/create-squad/Form'
 import { loader as squadEditLoader } from './components/squad/edit-squad/Form'
