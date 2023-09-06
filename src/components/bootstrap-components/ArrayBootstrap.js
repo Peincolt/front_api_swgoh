@@ -1,4 +1,3 @@
-import { isContentEditable } from '@testing-library/user-event/dist/utils';
 import Table from 'react-bootstrap/Table';
 
 export default function ArrayBootstrap(props)

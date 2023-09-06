@@ -1,15 +1,24 @@
 import { Row, Col } from "react-bootstrap";
 import importGuildViewSquad from "../../../code/viewSquad/importGuildViewSquad"
-import { useLoaderData } from "react-router-dom";
 import ButtonBootstrap from "../../bootstrap-components/ButtonBootstrap";
 import ArraySquad from "./ArraySquad";
 import '../../../assets/css/responsive.css'
 import { Link } from "react-router-dom"
 import { Helmet } from "react-helmet-async";
+import { useContext, useEffect } from "react";
+import { GlobalContext } from "../../common/context/GlobalContextProvider";
 
-export default function Squad(props)
+export default function Squad({squad})
 {
-    const { squad } = useLoaderData()
+    const { setGlobalData } = useContext(GlobalContext)
+    useEffect(() => {
+        setGlobalData(
+            {
+                spinner:false
+            }
+        )
+    },[])
+
     return (
         <>
             <Helmet>

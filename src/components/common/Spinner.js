@@ -3,7 +3,7 @@ import { ThreeCircles } from "react-loader-spinner"
 import { GlobalContext } from "./context/GlobalContextProvider"
 export default function Spinner()
 {
-    const { globalData, setGlobalData } = useContext(GlobalContext)
+    const { globalData } = useContext(GlobalContext)
     return (
         <ThreeCircles
             height="15%"

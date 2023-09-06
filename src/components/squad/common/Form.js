@@ -1,24 +1,36 @@
 import '../../../assets/css/responsive.css';
 import { Col, Row } from "react-bootstrap";
 import { Form as FormBootstrap } from 'react-bootstrap'
-import { useReducer, useState } from "react";
+import { useReducer, useState, useContext, useEffect } from "react";
 import FormGroup from "../../bootstrap-components/FormGroup";
 import squadReducer from './reducer/squadReducer';
 import ButtonBootstrap from '../../bootstrap-components/ButtonBootstrap';
 import { checkUnitNotPresent, unitExist } from '../helper/VerifUnits';
 import Autocomplete from '../../autocomplete/Autocomplete';
 import { Helmet } from 'react-helmet-async';
+import { GlobalContext } from '../../common/context/GlobalContextProvider';
 
 export function Form(props)
 {
-    let [formData, setFormData] = useState(props.squad);
-    let [unitField, setUnitField] = useState('');
-    let [unitFieldStatus, setUnitFieldStatus] = useState('');
-    let { heroes, ships } = props;
-    let [currentList, setCurrentList] = useState(props.currentList);
-    let [squad, dispatch] = useReducer(squadReducer,props.units);
-    let [id, setId] = useState(props.id)
-    let formFilterFields = [
+    const [formData, setFormData] = useState(props.squad);
+    const [unitField, setUnitField] = useState('');
+    const [unitFieldStatus, setUnitFieldStatus] = useState('');
+    const { heroes, ships } = props;
+    const [currentList, setCurrentList] = useState(props.currentList);
+    const [squad, dispatch] = useReducer(squadReducer,props.units);
+    const [id, setId] = useState(props.id)
+    const { setGlobalData } = useContext(GlobalContext)
+    const pageTitle = (squad.length === 0) ? "Création d'une nouvelle escouade" : `Modification de l'escouade ${formData.name}`;
+
+    useEffect(() => {
+        setGlobalData(
+            {
+                spinner: false
+            }
+        )
+    },[])
+
+    const formFilterFields = [
         {
             key : 0,
             type : 'text',
@@ -100,19 +112,18 @@ export function Form(props)
             }
         }
     ];
-    let inputProps = {
+    const inputProps = {
         onChange: (event, {newValue}) => {setUnitField(newValue)},
         className: "form-control",
         placeholder: "Nom de l'unité à ajouter",
         value: unitField
     }
-    let submitProps = {
+    const submitProps = {
         type: "submit",
         variant: "primary",
         text: props.id === 0 ? "Créer l'escouade" : "Modifier l'escouade" ,
         disabled: squad.length > 0 ? false : true
     };
-    let pageTitle = (squad.length === 0) ? "Création d'une nouvelle escouade" : `Modification de l'escouade ${formData.name}`;
 
     function addUnit(unitName)
     {
