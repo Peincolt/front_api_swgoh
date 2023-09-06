@@ -4,6 +4,7 @@ import FilterSquad from '../components/filter/FilterSquad.js';
 import FilterContextProvider from '../components/filter/context/FilterContext.js';
 import Skeleton from '../components/common/Skeleton.js';
 import importGuildSquad from "../code/filterSquad/importGuildSquad"
+import { Helmet } from 'react-helmet-async';
 
 
 export default function Root() {
@@ -11,6 +12,9 @@ export default function Root() {
   const [ squads ] = useState(useLoaderData()[0]);
   return (
     <Skeleton>
+      <Helmet>
+        <title>HGamers II - Accueil</title>
+      </Helmet>
       <FilterContextProvider>
         <FilterSquad headerArray={headerArray} squads={squads}/>
       </FilterContextProvider>

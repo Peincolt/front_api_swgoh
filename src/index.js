@@ -12,6 +12,7 @@ import ViewSquad from './routes/ViewSquad';
 import Home from './routes/Home';
 import CreateSquad from './routes/CreateSquad';
 import UpdateSquad from './routes/UpdateSquad';
+import { HelmetProvider } from 'react-helmet-async';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter([
@@ -38,9 +39,11 @@ const router = createBrowserRouter([
   }
 ])
 root.render(
-  <React.StrictMode>
-    <RouterProvider router={router}/>
-  </React.StrictMode>
+  <HelmetProvider>
+    <React.StrictMode>
+      <RouterProvider router={router}/>
+    </React.StrictMode>
+  </HelmetProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

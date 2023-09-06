@@ -7,6 +7,7 @@ import squadReducer from './reducer/squadReducer';
 import ButtonBootstrap from '../../bootstrap-components/ButtonBootstrap';
 import { checkUnitNotPresent, unitExist } from '../helper/VerifUnits';
 import Autocomplete from '../../autocomplete/Autocomplete';
+import { Helmet } from 'react-helmet-async';
 
 export function Form(props)
 {
@@ -111,6 +112,7 @@ export function Form(props)
         text: props.id === 0 ? "Créer l'escouade" : "Modifier l'escouade" ,
         disabled: squad.length > 0 ? false : true
     };
+    let pageTitle = (squad.length === 0) ? "Création d'une nouvelle escouade" : `Modification de l'escouade ${formData.name}`;
 
     function addUnit(unitName)
     {
@@ -185,9 +187,12 @@ export function Form(props)
 
     return (
         <>
+            <Helmet>
+                <title>{`HGamers II - ${pageTitle}`}</title>
+            </Helmet>
             <Row>
                 <Col className="text-center mt-4">
-                    <h1>{squad.length === 0 ? "Création d'une nouvelle escouade" : `Modification de l'escouade ${formData.name}`}</h1>
+                    <h1>{pageTitle}</h1>
                 </Col>
             </Row>
             <FormBootstrap className="mt-4" onSubmit={validFormulaire}>
