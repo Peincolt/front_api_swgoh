@@ -31,12 +31,14 @@ export default function Filter(props)
             defaultValue : "Type d'unité",
             options : [
                 {
-                    key : crypto.randomUUID(),
+                    //key : crypto.randomUUID(),
+                    key: 'type1',
                     value : 'hero',
                     label : 'Héros'
                 },
                 {
-                    key : crypto.randomUUID(),
+                    //key : crypto.randomUUID(),
+                    key: 'type2',
                     value : 'ship',
                     label : 'Vaisseaux'
                 }
@@ -53,12 +55,14 @@ export default function Filter(props)
             defaultValue : "Attaque/Défense",
             options : [
                 {
-                    key : crypto.randomUUID(),
+                    //key : crypto.randomUUID(),
+                    key: 'emplacement1',
                     value : 'attack',
                     label : 'Attaque'
                 },
                 {
-                    key : crypto.randomUUID(),
+                    //key : crypto.randomUUID(),
+                    key: 'emplacement2',
                     value : 'defense',
                     label : 'Défense'
                 }
