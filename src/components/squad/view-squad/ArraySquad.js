@@ -1,10 +1,8 @@
 import Table from 'react-bootstrap/Table';
+import { colorSpan } from '../../../code/viewSquad/functions';
 
 export default function ArraySquad(props)
 {
-    // Pour chaque units, il faut aller dans l'objet chercher l'info qu'on veut ! props.squad.units.nom.player.data
-    // Besoin de trier par joueur et non pas par perso => Récupère tous les joueurs via Object.keys d'un des persos de la squad.
-    // Pour chaque joueur, on va chercher les infos dans les deux objet. Voir comment pour utiliser un nom de variable comme nom de clé
     const units = Object.keys(props.squad.units);
     const players = Object.keys(props.squad.units[units[0]]['players']);
     return (
@@ -18,7 +16,20 @@ export default function ArraySquad(props)
             <tbody>
                 <tr>
                     <td rowSpan={2}></td>
-                    {units.map((element,key) => <td key={key}>{props.squad.units[element].name}</td>)}
+                    {
+                        units.map(function(element,key) {
+                            return (
+                                <td key={key}>
+                                    <div className='text-center'>
+                                        <img src={props.squad.units[element].image}/>
+                                        <div className='text-center'>
+                                            {props.squad.units[element].name}
+                                        </div>
+                                    </div>
+                                </td>
+                            )}
+                        )
+                    }
                 </tr>
                 <tr>
                     {Array.from({length:units.length}).map((_,key) => <td key={key}>{props.squad.type === 'hero' ? "Etoile(s) Gear Relic (Vitesse)" : "Etoile(s) Protection/Vie (Vitesse)"}</td>)}
@@ -29,11 +40,15 @@ export default function ArraySquad(props)
                         {
                             units.map((unit,index) => {
                                 let dataPlayer = props.squad.units[unit]['players'][player];
-                                return <td key={'td-unit-'+index}> {
-                                    props.squad.type === 'hero' ? 
-                                    (`${dataPlayer.rarity}* G${dataPlayer.gear_level} R${dataPlayer.relic_level} (${dataPlayer.speed})`): 
-                                    (`${dataPlayer.rarity}* ${dataPlayer.protection}/${dataPlayer.life} (${dataPlayer.speed})`)
-                                }
+                                return <td key={'td-unit-'+index}>
+                                    <b>
+                                        <span className={colorSpan(dataPlayer.gear_level)}> {
+                                        props.squad.type === 'hero' ? 
+                                        (`${dataPlayer.rarity}* G${dataPlayer.gear_level} R${dataPlayer.relic_level} (${dataPlayer.speed})`): 
+                                        (`${dataPlayer.rarity}* ${dataPlayer.protection}/${dataPlayer.life} (${dataPlayer.speed})`)
+                                    }
+                                        </span>
+                                    </b>
                                 </td>
                             })
                         }

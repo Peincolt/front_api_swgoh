@@ -3,6 +3,7 @@ import importGuildViewSquad from "../../../code/viewSquad/importGuildViewSquad"
 import ButtonBootstrap from "../../bootstrap-components/ButtonBootstrap";
 import ArraySquad from "./ArraySquad";
 import '../../../assets/css/responsive.css'
+import '../../../assets/css/main.css'
 import { Link } from "react-router-dom"
 import { Helmet } from "react-helmet-async";
 import { useContext, useEffect } from "react";

@@ -136,11 +136,11 @@ export function Form(props)
             if (baseId) {
                 dispatch({
                     type: 'add',
-                    id: id++,
+                    id: id+1,
                     name: unitName,
                     baseId: baseId
                 })
-                setId(id);
+                setId(id+1);
                 return true;
             }
             setUnitFieldStatus('L\'unité que vous essayer d\'ajouter n\'existe pas');
