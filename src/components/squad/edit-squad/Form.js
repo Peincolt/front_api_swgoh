@@ -22,7 +22,7 @@ export async function loader({params})
     let id = 0;
     let squadUnits = [];
     Object.entries(squadData.units).forEach(element => {
-        squadUnits.push({id: id++, baseId: element[0], name: getNameByBaseId(element[0], currentList)})
+        squadUnits.push({id: id++, baseId: element[0], name: getNameByBaseId(element[0], currentList), image: element[1].image})
     })
     return {squad, units, squadUnits, currentList}
 }

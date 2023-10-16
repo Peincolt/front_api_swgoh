@@ -1,5 +1,5 @@
 import '../../../assets/css/responsive.css';
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, Card, Button } from "react-bootstrap";
 import { Form as FormBootstrap } from 'react-bootstrap'
 import { useReducer, useState, useContext, useEffect } from "react";
 import FormGroup from "../../bootstrap-components/FormGroup";
@@ -132,13 +132,14 @@ export function Form(props)
     function addUnit(unitName)
     {
         if (!checkUnitNotPresent(unitName, squad)) {
-            const baseId = unitExist(unitName, currentList)
-            if (baseId) {
+            const returnUnitExist = unitExist(unitName, currentList)
+            if (returnUnitExist[0]) {
                 dispatch({
                     type: 'add',
                     id: id+1,
                     name: unitName,
-                    baseId: baseId
+                    baseId: returnUnitExist[1],
+                    image: returnUnitExist[2]
                 })
                 setId(id+1);
                 return true;
@@ -258,24 +259,60 @@ export function Form(props)
                     {
                         (squad.length > 0) ? 
                         (
-                            squad.map((element,index) => {
+                            squad.map(element => {
                                 return (
                                 <Col lg={4} key={`create-squad-${element.id}`} className='mb-4-lg'>
-                                    <label>Unité numéro {index + 1}</label>
-                                    <FormBootstrap.Control variant="text" name="units[]" value={element.name} readOnly/>
-                                    <div className='mt-1'>
-                                        {element.id !== squad[0].id ? <ButtonBootstrap variant="dark" text="<" onClick={(e) => {
-                                                e.preventDefault();
-                                                dispatch({type: 'left', id:element.id})
+                                    <Card style={{ marginBottom: '20px', height: '35%', width: '35%'}}>
+                                        <div style={{positon: 'relative'}}>
+                                            {
+                                            element.id !== squad[0].id ?
+                                                <button type="button" onClick={
+                                                    e => {
+                                                        e.preventDefault();
+                                                        dispatch(
+                                                            {
+                                                                type: 'left',
+                                                                id:element.id
+                                                            }
+                                                        )
+                                                    }
+                                                }
+                                                className="close" aria-label="Close" style={{position: 'absolute', top: 0, right: 50, backgroundColor: 'blue', color: 'white', border: 'none'}}>
+                                                    &lt;
+                                                </button>
+                                            : ''
+                                            } 
+                                            <button type="button" onClick={e => {deleteUnit(e, element.id)}} className="close" aria-label="Close" style={{position: 'absolute', top: 0, right: 25, backgroundColor: 'red', color: 'white', border: 'none'}}>
+                                                X
+                                            </button>
+                                            {
+                                                element.id !== squad[squad.length-1].id ?
+                                                    <button type="button" onClick={
+                                                        e => {
+                                                            e.preventDefault();
+                                                            dispatch(
+                                                                {
+                                                                    type: 'right',
+                                                                    id:element.id
+                                                                }
+                                                            )
+                                                        }
+                                                     } className="close" aria-label="Close" style={{position: 'absolute', top: 0, right: 0, backgroundColor: 'blue', color: 'white', border: 'none' }}>
+                                                        &gt;
+                                                    </button>
+                                                : 
+                                                <button type="button" disabled className="close hidden" aria-label="Close" style={{position: 'absolute', top: 0, right: 0, backgroundColor: 'blue', color: 'white', border: 'none' }}>
+                                                    &gt;
+                                                </button>
                                             }
-                                        }/> : ''}
-                                        <ButtonBootstrap variant="danger" text="X" onClick={e => {deleteUnit(e, element.id)}} className="ms-2 me-2"/>
-                                        {element.id !== squad[squad.length-1].id ? <ButtonBootstrap variant="dark" text=">" onClick={(e) => {
-                                                e.preventDefault();
-                                                dispatch({type: 'right', id:element.id})
-                                            }
-                                        }/>:''}
-                                    </div>
+                                            <Card.Img variant="top" className="card-img-top" src={element.image}/>
+                                        </div>
+                                        <Card.Body>
+                                                <Card.Title className='text-center'>
+                                                    {element.name}
+                                                </Card.Title>
+                                        </Card.Body>
+                                    </Card>
                                 </Col>
                             )
                         })):

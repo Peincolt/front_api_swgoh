@@ -8,7 +8,8 @@ export default function squadReducer(squad, action)
                 ...squad, {
                     id : action.id,
                     name : action.name,
-                    baseId: action.baseId
+                    baseId: action.baseId,
+                    image: action.image
                 }
             ]
         case 'remove':

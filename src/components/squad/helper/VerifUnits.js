@@ -12,18 +12,16 @@ export function checkUnitNotPresent(unitName, squad)
     return present;
 }
 
-export function unitExist(unitName, currentList)
+export function unitExist(unitName, unitList)
 {
-    let baseId = false;
-    if (currentList.length) {
-        currentList.forEach(element => {
-            if (element.name === unitName) {
-                baseId = element.baseId;
-                return true;
+    if (unitList.length > 0) {
+        for(let i = 0; i < unitList.length; i++) {
+            if (unitList[i].name === unitName) {
+                return [true, unitList[i].baseId, unitList[i].image]
             }
-        });
+        }
     }
-    return baseId;
+    return false;
 }
 
 export function getNameByBaseId(baseId, currentList)
