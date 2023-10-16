@@ -1,5 +1,4 @@
-import importUnits from "../../../code/create-squad/importUnits"
-import importGuildViewSquad from "../../../code/viewSquad/importGuildViewSquad"
+import { importUnits, importGuildViewSquad } from "../../../services/Api"
 import { Form as CommonForm} from "../common/Form";
 import { getNameByBaseId } from "../helper/VerifUnits"
 import { useLoaderData } from "react-router-dom";

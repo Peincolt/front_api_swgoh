@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import FilterSquad from '../components/filter/FilterSquad.js';
 import FilterContextProvider from '../components/filter/context/FilterContext.js';
 import Skeleton from '../components/common/Skeleton.js';
-import importGuildSquad from "../code/filterSquad/importGuildSquad"
+import { importGuildSquad } from "../services/Api.js";
 import { Helmet } from 'react-helmet-async';
 
 
@@ -24,6 +24,6 @@ export default function Root() {
 
 export async function loader()
 {
-    const squads = await importGuildSquad()
-    return [squads, false];
+  const squads = await importGuildSquad()
+  return [squads, false];
 }

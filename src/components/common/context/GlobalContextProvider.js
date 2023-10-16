@@ -5,7 +5,9 @@ export const GlobalContext = createContext();
 function GlobalContextProvider({children}) {
     const [ globalData, setGlobalData ] = useState(
         {
-            spinner : true
+            spinner : true,
+            url: 'http://www.api-hgamers.fr/api/',
+            guildId: 'uuwcpRBoStWfogZersAvJA'
         }
     )
 

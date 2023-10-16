@@ -1,5 +1,5 @@
 import { Row, Col } from "react-bootstrap";
-import importGuildViewSquad from "../../../code/viewSquad/importGuildViewSquad"
+import { importGuildViewSquad } from "../../../services/Api"
 import ButtonBootstrap from "../../bootstrap-components/ButtonBootstrap";
 import ArraySquad from "./ArraySquad";
 import '../../../assets/css/responsive.css'

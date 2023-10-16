@@ -1,4 +1,4 @@
-import importUnits from "../../../code/create-squad/importUnits"
+import { importUnits } from "../../../services/Api.js"
 import { Form as CommonForm} from "../common/Form";
 import { useLoaderData } from "react-router-dom";
 
