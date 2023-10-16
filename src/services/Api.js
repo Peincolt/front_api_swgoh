@@ -1,9 +1,9 @@
-import { GlobalContext } from '../components/common/context/GlobalContextProvider';
-import { useContext } from "react";
+const url = process.env.REACT_APP_API_URL;
+const idGuild = process.env.REACT_APP_ID_GUILD;
 
 function importUnits()
 {
-    return fetch("http://www.api-hgamers.fr/api/units",{
+    return fetch(`${url}/units`,{
         method: "GET"
     })
     .then(resp => resp.json())
@@ -11,7 +11,7 @@ function importUnits()
 
 function importGuildSquad()
 {
-    return fetch("http://www.api-hgamers.fr/api/guild/uuwcpRBoStWfogZersAvJA/squad/search", {
+    return fetch(`${url}/guild/${idGuild}/squad/search`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -27,7 +27,7 @@ function importGuildSquad()
 
 function importGuildViewSquad(idSquad)
 {
-    return fetch("http://www.api-hgamers.fr/api/guild/uuwcpRBoStWfogZersAvJA/squad/get/"+idSquad, {
+    return fetch(`${url}/guild/${idGuild}/squad/get/${idSquad}`, {
       method: 'GET'
     })
     .then(res => res.json())
