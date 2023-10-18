@@ -21,6 +21,7 @@ export function Form(props)
     const [id, setId] = useState(props.id)
     const { setGlobalData } = useContext(GlobalContext)
     const pageTitle = (squad.length === 0) ? "Création d'une nouvelle escouade" : `Modification de l'escouade ${formData.name}`;
+    const urlApi = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         setGlobalData(
@@ -175,7 +176,7 @@ export function Form(props)
         })
 
         if (props.id === 0) {
-            reponse = await fetch('http://www.api-hgamers.fr/api/squad/create',{
+            reponse = await fetch(`${urlApi}/squad/create`,{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -183,7 +184,7 @@ export function Form(props)
                 body: bodyData
             })
         } else {
-            reponse = await fetch(`http://www.api-hgamers.fr/api/squad/${formData.uniqueIdentifier}/update`,{
+            reponse = await fetch(`${urlApi}/squad/${formData.uniqueIdentifier}/update`,{
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
