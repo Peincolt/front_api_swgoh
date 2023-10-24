@@ -13,6 +13,8 @@ import NotFound from "../../status/NotFound";
 export default function Squad({squad})
 {
     const { setGlobalData } = useContext(GlobalContext)
+    const url = process.env.REACT_APP_API_URL
+    const idGuild = process.env.REACT_APP_ID_GUILD
     useEffect(() => {
         setGlobalData(
             {
@@ -41,7 +43,7 @@ export default function Squad({squad})
                     </Col>
                     <Col sm className="text-center">
                         <ButtonBootstrap variant="primary" text="Exporter l'escouade" target="_blank" onClick = { e => {
-                            window.open(`http://www.api-hgamers.fr/api/guild/uuwcpRBoStWfogZersAvJA/squad/${squad.uniqueIdentifier}/export`)
+                            window.open(`${url}/guild/${idGuild}/squad/${squad.uniqueIdentifier}/export`)
                         }} />
                     </Col>
                 </Row>

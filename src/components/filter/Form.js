@@ -9,6 +9,8 @@ import '../../assets/css/responsive.css';
 export default function Filter(props)
 {
     const { filterData, setFilterData } = useContext(FilterContext)
+    const url = process.env.REACT_APP_API_URL;
+    const idGuild = process.env.REACT_APP_ID_GUILD;
 
     let formFilterFields = [
         {
@@ -108,7 +110,7 @@ export default function Filter(props)
                     text="Exporter les résultats"
                     onClick = { e => 
                         {
-                            let exportUrl = "http://www.api-hgamers.fr/api/guild/uuwcpRBoStWfogZersAvJA/squad/export"
+                            let exportUrl = `${url}/guild/${idGuild}/squad/export`
                             for (const [key, value] of Object.entries(filterData)) {
                                 let first = true;
                                 if (value !== '') {

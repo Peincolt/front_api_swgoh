@@ -15,6 +15,7 @@ export default function FilterSquad(props)
   const [ squads, setSquads ] = useState(props.squads);
   const [ filteredSquad, setFilteredSquad] = useState(props.squads)
   const { setGlobalData } = useContext(GlobalContext)
+  const url = process.env.REACT_APP_API_URL;
 
   useEffect(
     () => {
@@ -60,7 +61,7 @@ export default function FilterSquad(props)
   }
 
   const deleteSquad = (idSquad) => {
-    fetch(`http://www.api-hgamers.fr/api/squad/${idSquad}/delete`, {
+    fetch(`${url}/squad/${idSquad}/delete`, {
       method: 'DELETE'
     })
     .then(res => res.json())
