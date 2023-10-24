@@ -30,7 +30,13 @@ function importGuildViewSquad(idSquad)
     return fetch(`${url}/guild/${idGuild}/squad/get/${idSquad}`, {
       method: 'GET'
     })
-    .then(res => res.json())
+    .then(function(resp) {
+      if (resp.ok) {
+        return resp.json();
+      } else if (resp.status === 404) {
+        return null;
+      }
+    })
 }
 
 export { importUnits, importGuildSquad, importGuildViewSquad }

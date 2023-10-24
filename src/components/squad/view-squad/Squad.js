@@ -8,6 +8,7 @@ import { Link } from "react-router-dom"
 import { Helmet } from "react-helmet-async";
 import { useContext, useEffect } from "react";
 import { GlobalContext } from "../../common/context/GlobalContextProvider";
+import NotFound from "../../status/NotFound";
 
 export default function Squad({squad})
 {
@@ -21,6 +22,9 @@ export default function Squad({squad})
     },[])
 
     return (
+        (squad === null) ?
+        <NotFound message="L'escouade que vous cherchez n'existe pas"/>
+        :
         <>
             <Helmet>
                 <title>HGamers II - Visualisation de l'escouade {squad.name}</title>
