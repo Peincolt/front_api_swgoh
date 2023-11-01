@@ -1,0 +1,16 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+h1 {
+    font-size: 100px;
+}
+
+p {
+    font-family: 'Arial Black', sans-serif;
+    padding: 10px 0;
+    font-size: 50px;
+}
